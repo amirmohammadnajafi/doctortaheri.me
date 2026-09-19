@@ -235,6 +235,51 @@
     .nav-bar { height: 4rem; }
     .brand { font-size: 1.25rem; }
   }
+
+  /* === Prenota buttons === */
+  .nav-cta {
+    background: #c9a227; color: #223c78 !important;
+    font-weight: 700; padding: .6rem 1.2rem; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: #dbb93a; }
+  .hero-btns { display: flex; gap: .9rem; flex-wrap: wrap; margin-top: .5rem; }
+  .btn-primary {
+    background: #c9a227; color: #223c78;
+    font-weight: 700; padding: .85rem 1.7rem; border-radius: 999px;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #dbb93a; }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,.7); color: #fff;
+    font-weight: 600; padding: .8rem 1.6rem; border-radius: 999px;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.12); }
+
+  /* === Floating call button === */
+  #call-fab {
+    position: fixed; bottom: 25px; left: 25px; z-index: 999998;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #16a34a; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    transition: transform .3s ease;
+  }
+  #call-fab:hover { transform: scale(1.08); }
+  #call-fab svg { width: 28px; height: 28px; }
+
+  /* === Chatbot widget === */
+  #doctor-chat-widget { position: fixed; bottom: 25px; right: 25px; z-index: 999999; }
+  #doctor-chat-bubble { width: 60px; height: 60px; background-color: #075e54; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,.25); cursor: pointer; transition: transform .3s ease; }
+  #doctor-chat-bubble:hover { transform: scale(1.08); }
+  #doctor-chat-bubble svg { width: 32px; height: 32px; fill: white; }
+  #doctor-chat-window-wrapper { display: none; }
+  #doctor-chat-window { position: absolute; bottom: 80px; right: 0; width: 390px; max-width: calc(100vw - 40px); height: 600px; max-height: calc(100vh - 120px); background: #fff; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,.2); overflow: hidden; border: 1px solid #e5e7eb; display: flex; flex-direction: column; }
+  #doctor-chat-header { background-color: #075e54; color: white; padding: 12px 18px; font-weight: 600; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+  #doctor-chat-close { cursor: pointer; font-size: 26px; line-height: 1; opacity: .8; }
+  #doctor-chat-close:hover { opacity: 1; }
+  #doctor-chat-iframe { flex-grow: 1; width: 100%; border: none; background-color: #f7f3e8; }
 </style>
 </head>
 <body>
@@ -270,6 +315,7 @@
       <a href="#servizi">Servizi</a>
       <a href="#lo-studio">Lo Studio</a>
       <a href="#contatti">Contatti</a>
+      <a class="nav-cta" href="tel:+390114271629">📞 Prenota visita</a>
     </nav>
   </div>
 </header>
@@ -284,6 +330,10 @@
       <span class="hero-eyebrow">Ambulatorio Medico e Odontoiatrico Dr. Taheri</span>
       <h1>Benvenuti nel nostro studio.</h1>
       <p>Offriamo cure mediche specialistiche e servizi odontoiatrici all'avanguardia per la salute e il sorriso di tutta la famiglia.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="tel:+390114271629">Prenota ora</a>
+        <a class="btn-outline" href="#servizi">Scopri i servizi</a>
+      </div>
     </div>
   </div>
 </section>
@@ -436,6 +486,45 @@
 </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<!-- Floating call button -->
+<a id="call-fab" href="tel:+390114271629" aria-label="Chiama ora">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<!-- Chatbot widget -->
+<div id="doctor-chat-widget">
+  <div id="doctor-chat-window-wrapper">
+    <div id="doctor-chat-window">
+      <div id="doctor-chat-header">
+        <span>🟢 Assistente Virtuale</span>
+        <span id="doctor-chat-close" onclick="toggleDoctorChat()">×</span>
+      </div>
+      <iframe id="doctor-chat-iframe" src="https://amiiirnajafiii-enterprise.hf.space/?embed=true&theme=light&v=105" allow="microphone; camera; autoplay"></iframe>
+    </div>
+  </div>
+  <div id="doctor-chat-bubble" onclick="toggleDoctorChat()">
+    <svg id="chat-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span id="close-icon" style="display:none; color:white; font-size:32px; line-height:1;">×</span>
+  </div>
+</div>
+
+<script>
+  function toggleDoctorChat() {
+    var wrapper = document.getElementById('doctor-chat-window-wrapper');
+    var chatIcon = document.getElementById('chat-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (wrapper.style.display === 'block') {
+      wrapper.style.display = 'none';
+      chatIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
+    } else {
+      wrapper.style.display = 'block';
+      chatIcon.style.display = 'none';
+      closeIcon.style.display = 'block';
+    }
+  }
+</script>
 
 </body>
 </html>
