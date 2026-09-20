@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Ambulatorio Medico e Odontoiatrico Dr. Sasan Taheri — Torino. Cure mediche specialistiche e servizi odontoiatrici all'avanguardia per tutta la famiglia." />
 <title>Studio Medico e Odontoiatrico Dr. Taheri — Torino</title>
+<link rel="icon" href="logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -69,7 +70,9 @@
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 1.5rem; font-weight: 500;
     letter-spacing: .02em;
+    display: flex; align-items: center; gap: .7rem;
   }
+  .brand-logo { height: 46px; width: auto; border-radius: 8px; }
   nav.main-nav { display: flex; gap: 2rem; font-size: .9rem; font-weight: 500; }
   nav.main-nav a:hover { color: var(--primary); }
 
@@ -310,12 +313,11 @@
   </div>
 
   <div class="nav-bar">
-    <div class="brand">Studio Dr. Taheri</div>
+    <div class="brand"><img class="brand-logo" src="logo.jpg" alt="Logo Dr. Taheri" />Studio Dr. Taheri</div>
     <nav class="main-nav">
       <a href="#servizi">Servizi</a>
       <a href="#lo-studio">Lo Studio</a>
       <a href="#contatti">Contatti</a>
-      <a class="nav-cta" href="tel:+390114271629">📞 Prenota visita</a>
     </nav>
   </div>
 </header>
@@ -329,9 +331,7 @@
     <div class="hero-card">
       <span class="hero-eyebrow">Ambulatorio Medico e Odontoiatrico Dr. Taheri</span>
       <h1>Benvenuti nel nostro studio.</h1>
-      <p>Offriamo cure mediche specialistiche e servizi odontoiatrici all'avanguardia per la salute e il sorriso di tutta la famiglia.</p>
       <div class="hero-btns">
-        <a class="btn-primary" href="tel:+390114271629">Prenota ora</a>
         <a class="btn-outline" href="#servizi">Scopri i servizi</a>
       </div>
     </div>
